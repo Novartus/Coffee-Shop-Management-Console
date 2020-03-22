@@ -1,0 +1,18 @@
+Simple Coffee: Rs.50
+Double Espresso: Rs.100
+Double Espresso: Rs.100
+Total Bill: 100
+
+
+| Total Final Collection is : 100 |
+
+Simple Coffee: Rs.50
+Double Espresso: Rs.100
+Large Hot Coffee: Rs.50
+Total Bill: 200
+Large Hot Coffee: Rs.50
+Total Bill: 50
+
+
+| Total Final Collection is : 250 |
+

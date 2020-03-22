@@ -1,0 +1,11 @@
+E:\CSharp_Console\CoffeeShop\bin\Release\netcoreapp3.1\CoffeeShop.exe
+E:\CSharp_Console\CoffeeShop\bin\Release\netcoreapp3.1\CoffeeShop.deps.json
+E:\CSharp_Console\CoffeeShop\bin\Release\netcoreapp3.1\CoffeeShop.runtimeconfig.json
+E:\CSharp_Console\CoffeeShop\bin\Release\netcoreapp3.1\CoffeeShop.runtimeconfig.dev.json
+E:\CSharp_Console\CoffeeShop\bin\Release\netcoreapp3.1\CoffeeShop.dll
+E:\CSharp_Console\CoffeeShop\bin\Release\netcoreapp3.1\CoffeeShop.pdb
+E:\CSharp_Console\CoffeeShop\obj\Release\netcoreapp3.1\CoffeeShop.csprojAssemblyReference.cache
+E:\CSharp_Console\CoffeeShop\obj\Release\netcoreapp3.1\CoffeeShop.AssemblyInfoInputs.cache
+E:\CSharp_Console\CoffeeShop\obj\Release\netcoreapp3.1\CoffeeShop.AssemblyInfo.cs
+E:\CSharp_Console\CoffeeShop\obj\Release\netcoreapp3.1\CoffeeShop.dll
+E:\CSharp_Console\CoffeeShop\obj\Release\netcoreapp3.1\CoffeeShop.pdb
