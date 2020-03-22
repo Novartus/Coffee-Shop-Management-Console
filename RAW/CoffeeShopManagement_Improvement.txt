@@ -1,0 +1,7 @@
+Improvements:
+-- EveryTime it needs password:admin
+
+Sometimes it is complicated to access it
+
+C# code to make a quote file to generate random quote.
+or select from few lines

@@ -1,0 +1,279 @@
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+
+namespace CoffeeShop
+{
+	class MainClass
+	{
+		static int Cash_Register = 0;
+		static int Customer_Bill = 0;
+
+		public static void Menu()
+		{
+			List<String> List = new List<String>();
+
+			char done;
+			do
+			{
+				Console.Write(@"
+           {                              
+       }   }   {                            
+      {   {  }  }                            
+       }   }{  {                           
+      {  }{  }  }                           
+     ( }{ }{  { )                                     Please choose an item from Today's Menu !       
+    .-{   }   }-.                            
+   ( ( } { } { } )
+   |`-.._____..-'|                             _________________________________________________________
+   |             ;--.                          1. Simple Coffee:                              | Rs.50 |
+   |   (__)     (__  \                         2. Double Espresso:                            | Rs.100|
+   |   (oo)      | )  )                        3. Large Hot Coffee:                           | Rs.100|
+   |    \/       |/  /                         4. Hot Coco:                                   | Rs.80 |
+   |             /  /                          5. Double Latte with Foam:                     | Rs.90 |
+   |            (  /                           ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
+   \             y'
+    `-.._____..-'"); // Menu of the day
+				Console.WriteLine("\n\n\n\n");
+				Console.WriteLine("Please Enter Your Choice: ");
+				Console.WriteLine("Press X to Finish the order");
+
+			Next_Order: //Label
+				char order = char.Parse(Console.ReadLine());
+				switch (order)
+				{
+					case '1':
+						Customer_Bill += 50;
+						List.Add("Simple Coffee:                              | Rs.50 |");
+						using (StreamWriter Writer = File.AppendText("bill.txt"))
+						{
+							Writer.WriteLine("Simple Coffee: Rs.50");
+						}
+						goto Next_Order;
+					//	break;
+					case '2':
+						Customer_Bill += 100;
+						List.Add("Double Espresso:                            | Rs.100|");
+						using (StreamWriter Writer = File.AppendText("bill.txt"))
+						{
+							Writer.WriteLine("Double Espresso: Rs.100");
+						}
+						goto Next_Order;
+					//	break;
+					case '3':
+						Customer_Bill += 50;
+						List.Add("Large Hot Coffee:                           | Rs.100|");
+						using (StreamWriter Writer = File.AppendText("bill.txt"))
+						{
+							Writer.WriteLine("Large Hot Coffee: Rs.50");
+						}
+						goto Next_Order;
+					//	break;
+					case '4':
+						Customer_Bill += 80;
+						List.Add("Hot Coco:                                   | Rs.80 |");
+						using (StreamWriter Writer = File.AppendText("bill.txt"))
+						{
+							Writer.WriteLine("Hot Coco: Rs.80");
+						}
+						goto Next_Order;
+					//	break;
+					case '5':
+						Customer_Bill += 90;
+						List.Add("Double Latte with Foam:                     | Rs.90 |");
+						using (StreamWriter Writer = File.AppendText("bill.txt"))
+						{
+							Writer.WriteLine("Double Latte with Foam: Rs.90");
+						}
+						goto Next_Order;
+					//	break;
+					case 'X':
+					case 'x':
+						break;
+					default:
+						Console.WriteLine("Not on the menu!");
+						break;
+
+				}
+
+				Console.Write("Want to add something else? (Y/N)");
+				done = Char.Parse(Console.ReadLine());
+				Console.Clear();
+				Cash_Register += Customer_Bill;
+
+			} while (done == 'y' || done == 'Y');
+
+			Console.WriteLine("\n Please take your bill");
+			Console.WriteLine("\n");
+
+			Console.WriteLine(@"+------------------------------------------------------+
+|                                  	               |
+|        	The Simple CoffeeShop                  |
+|                                                      |
+|                 Address Line 1,2                     |
+|                 2nd Address Line                     |
+|                 (+91) 12345-67890                    |
+|                                                      |"); //Order Bill in ASCII
+			foreach (var items in List)
+			{
+				Console.WriteLine("|->{0}", items);
+			} //PRINT ALL ELEMTNS FROM ARRAY
+			Console.WriteLine(@"|                                                      |");
+			Console.WriteLine("\t\t  TOTAL Rs: {0}                       ", Customer_Bill);
+			Console.WriteLine("\t\t  No. Of Items: {0}                   ", List.Count);
+			Console.WriteLine(@"|                                                      |
+|               Have A Good Day !                 :o_o:|
++------------------------------------------------------+"); // Order Bill Ending in ASCII
+			using (StreamWriter Writer = File.AppendText("bill.txt"))
+			{
+				Writer.WriteLine("Total Bill: {0}", Customer_Bill);
+			} //Writing Bills into a file
+			Console.WriteLine(@"
+  _____ _                 _     __   __          
+ |_   _| |__   __ _ _ __ | | __ \ \ / /__  _   _ 
+   | | | '_ \ / _` | '_ \| |/ /  \ V / _ \| | | |
+   | | | | | | (_| | | | |   <    | | (_) | |_| |
+   |_| |_| |_|\__,_|_| |_|_|\_\   |_|\___/ \__,_|
+                                                 
+"); // Thank You in ASCII
+			System.Threading.Thread.Sleep(500);
+			List.Clear();
+		}
+
+
+		public static void Main(string[] args)
+		{
+			string Title = @"Welcome to The Simple-Coffee-Shop";
+
+			Console.SetCursorPosition((Console.WindowWidth - Title.Length) / 2, Console.CursorTop); //Center Alignment of Title
+			Console.WriteLine(Title + "\n");
+
+			DateTime now = DateTime.Now; // Date & Time
+			var TIME = now.ToString("F"); //F -> format of date and time
+
+			Console.SetCursorPosition((Console.WindowWidth - TIME.Length) / 2, Console.CursorTop); //for center alignment
+			Console.WriteLine(TIME + "\n");  // Center Alignment of Date and Time
+
+			Console.WriteLine("Quote of the Moment :");
+			string[] allLines = File.ReadAllLines(@"E:\Quotes.txt");
+			Random rnd1 = new Random();
+			Console.WriteLine(allLines[rnd1.Next(allLines.Length)]);
+
+			char run;
+			do
+			{
+				Console.WriteLine(@"
+                             ________________________
+                            (___________            |
+                              [XXXXX]   |  Welcome  |
+                         __  /~~~~~~~\  |    the    |
+       ()               /  \|@@@@@@@@@\ |  coffee   |
+         )              \   |@@@@@@@@@@||   shop    |
+        (                   \@@@@@@@@@@||   ______  |
+       __)__                 \@@@@@@@@/ |   |OPEN|  |
+   (|\|     \               __\@@@@@@/__|   ~~~~~~  |
+      \     /              (____________|___________|
+       \___/               |________________________|
+ "); //ASCII Art of Coffee
+
+				Console.Write("Enter Password: ");
+				string password = "";
+				do
+				{
+					ConsoleKeyInfo key = Console.ReadKey(true);
+					if (key.Key != ConsoleKey.Backspace && key.Key != ConsoleKey.Enter)
+					{
+						password += key.KeyChar;
+						Console.Write("*");
+					}
+					else
+					{
+						if (key.Key == ConsoleKey.Backspace && password.Length > 0)
+						{
+							password = password.Substring(0, (password.Length - 1));
+							Console.Write("\b \b");
+						}
+						else if (key.Key == ConsoleKey.Enter)
+						{
+							break;
+						}
+					}
+				} while (true); // Mask The Password as User Types
+				Console.Clear();
+
+			Skip_Login:
+				if (password == "admin")
+				{
+					//Console.WriteLine("Welcome User");
+					Console.WriteLine(@"
+ __        __   _                               _       _           _       
+ \ \      / /__| | ___ ___  _ __ ___   ___     / \   __| |_ __ ___ (_)_ __  
+  \ \ /\ / / _ \ |/ __/ _ \| '_ ` _ \ / _ \   / _ \ / _` | '_ ` _ \| | '_ \ 
+   \ V  V /  __/ | (_| (_) | | | | | |  __/  / ___ \ (_| | | | | | | | | | |
+    \_/\_/ \___|_|\___\___/|_| |_| |_|\___| /_/   \_\__,_|_| |_| |_|_|_| |_|
+                                                                            
+"); //Welcome admin in ASCII
+					Console.WriteLine(@"    ) )        /\
+   =====      /  \
+  _|___|_____/ __ \____________
+ |::::::::::/ |  | \:::::::::::|
+ |:::::::::/  ====  \::::::::::|
+ |::::::::/__________\:::::::::|
+ |_________|  ____  |__________|
+  | ______ | / || \ | _______ |
+  ||  |   || ====== ||   |   ||
+  ||--+---|| |    | ||---+---||
+  ||__|___|| |   o| ||___|___||
+  |========| |____| |=========|
+ (^^-^^^^^-|________|-^^^--^^^)
+ (,, , ,, ,/________\,,,, ,, ,)
+','',,,,' /__________\,,,',',;;"); // House in ASCII
+
+					System.Threading.Thread.Sleep(700);  // Sleeps for 500
+					Console.Clear();
+
+					Console.WriteLine("What action would you like to perform?");
+					Console.WriteLine("1. Check current balance in register");
+					Console.WriteLine("2. Place an order");
+					Console.WriteLine("3. Close register");
+
+					char choice = Char.Parse(Console.ReadLine().Trim()); //Remove extra spaces
+					Console.Clear();
+
+					switch (choice)
+					{
+						case '1':
+							Console.WriteLine("The cash register currently has {0} rupees", Cash_Register);
+							break;
+
+						case '2':
+							Customer_Bill = 0;
+							Menu();
+							break;
+
+						case '3':
+							break;
+
+						default:
+							Console.WriteLine("Invalid option!");
+							break;
+					} //Main Menu
+				}
+				else
+				{
+					Console.WriteLine("Access Denied");
+				}
+				Console.Write("Another Registration? (Y/N)");
+				run = Convert.ToChar(Console.ReadLine());
+				if (run == 'n' || run == 'N')
+				{
+					Console.WriteLine("Session's Collection in Rs. :{0}", Cash_Register);
+					break; //Exit The Program
+				}
+				Console.Clear();
+				goto Skip_Login;
+			}
+			while (run == 'y' || run == 'y');
+		}
+	}
+}
